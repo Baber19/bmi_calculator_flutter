@@ -13,6 +13,40 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool isMaleSelected = true;
+
+  TextEditingController heightController = TextEditingController();
+  TextEditingController weightController = TextEditingController();
+
+  String? bmiCalculation(){
+    if(bmiResult<18.5){
+      print("UnderWeight");
+    }
+    else if(bmiResult>18.5 && bmiResult<24.5){
+      return "Normal";
+    }
+    else if(bmiResult>25 && bmiResult<29.5){
+      return "Overweight";
+    }
+    else if(bmiResult>=29.6){
+      print("Obese");
+    }
+  }
+ Color? getBmiColor(){
+   if(bmiResult<18.5){
+     return Colors.orange;
+   }
+   else if(bmiResult>18.5 && bmiResult<24.5){
+     return Colors.teal;
+   }
+   else if(bmiResult>25 && bmiResult<29.5){
+     return Colors.red;
+   }
+   else if(bmiResult>=29.6){
+     return Colors.red[700];
+   }
+ }
+  double bmiResult = 32;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -48,7 +82,7 @@ class _MyAppState extends State<MyApp> {
                       left: 140,
                       top: 70,
                       child: Text(
-                        "24.5",
+                        bmiResult.toStringAsFixed(2),
                         style: TextStyle(
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
@@ -59,8 +93,8 @@ class _MyAppState extends State<MyApp> {
                   ],
                 ),
                 Text(
-                  "Healthy",
-                  style: TextStyle(color: Colors.tealAccent, fontSize: 50),
+                    bmiCalculation()!,
+                  style: TextStyle(color: getBmiColor()),
                 ),
                 SizedBox(height: 20),
                 Row(
@@ -96,7 +130,9 @@ class _MyAppState extends State<MyApp> {
                         Text(
                           "Female",
                           style: TextStyle(
-                            color: isMaleSelected ? Colors.grey : Colors.pinkAccent,
+                            color: isMaleSelected
+                                ? Colors.grey
+                                : Colors.pinkAccent,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
@@ -109,7 +145,9 @@ class _MyAppState extends State<MyApp> {
                           },
                           child: Icon(
                             Icons.female,
-                            color: isMaleSelected ? Colors.grey : Colors.pinkAccent,
+                            color: isMaleSelected
+                                ? Colors.grey
+                                : Colors.pinkAccent,
                             size: 80,
                           ),
                         ),
@@ -117,71 +155,87 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ],
                 ),
-                SizedBox(height: 40),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          "Age",
-                          style: TextStyle(color: Colors.grey, fontSize: 30),
-                        ),
-                        Text(
-                          "23",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 50,
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30.0, right: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            "Age",
+                            style: TextStyle(color: Colors.grey, fontSize: 20),
                           ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          "Height",
-                          style: TextStyle(color: Colors.grey, fontSize: 30),
-                        ),
-                        Text(
-                          "23",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 50,
+                          SizedBox(height: 15),
+                          Text(
+                            "23",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          "Weight",
-                          style: TextStyle(color: Colors.grey, fontSize: 30),
-                        ),
-                        Text(
-                          "23",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 50,
+                        ],
+                      ),
+                      SizedBox(width: 10),
+                      Container(color: Colors.grey, width: 1, height: 70),
+                      SizedBox(width: 10),
+
+                      Column(
+                        children: [
+                          Text(
+                            "Height",
+                            style: TextStyle(color: Colors.grey, fontSize: 20),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+
+                          SizedBox(height: 15),
+
+                          Text(
+                            "23",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 20),
+
+                      Container(color: Colors.grey, width: 1, height: 70),
+
+                      Column(
+                        children: [
+                          Text(
+                            "Weight",
+                            style: TextStyle(color: Colors.grey, fontSize: 20),
+                          ),
+                          Text(
+                            "23",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 20),
-                Container(
-                  width: MediaQuery.heightOf(context),
-                  height: 100,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      print("Button presses");
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
+                InkWell(
+                  onTap: (){},
+                  child: Container(
+                    width: double.infinity,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: Colors.teal
+
                     ),
-                    child: Text(
-                      "Calculate BMI",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
+                    child: Center(
+                      child: Text(
+                        "Calculate BMI",
+                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      ),
                     ),
                   ),
                 ),
