@@ -16,36 +16,45 @@ class _MyAppState extends State<MyApp> {
 
   TextEditingController heightController = TextEditingController();
   TextEditingController weightController = TextEditingController();
+  TextEditingController ageController = TextEditingController();
 
-  String? bmiCalculation(){
-    if(bmiResult<18.5){
-      print("UnderWeight");
-    }
-    else if(bmiResult>18.5 && bmiResult<24.5){
+  double bmiResult = 1;
+
+  void calculateBMI() {
+    final double heightCm = double.parse(heightController.text);
+    final double weightKg = double.parse(weightController.text);
+
+    final double heightMeter = heightCm / 100;
+
+    setState(() {
+      bmiResult = weightKg / (heightMeter * heightMeter);
+    });
+  }
+
+
+  String? bmiCalculation() {
+    if (bmiResult < 18.5) {
+      return "Underweight";
+    } else if (bmiResult > 18.5 && bmiResult < 24.5) {
       return "Normal";
-    }
-    else if(bmiResult>25 && bmiResult<29.5){
+    } else if (bmiResult > 25 && bmiResult < 29.5) {
       return "Overweight";
-    }
-    else if(bmiResult>=29.6){
-      print("Obese");
+    } else if (bmiResult >= 29.6) {
+      return "Obese";
     }
   }
- Color? getBmiColor(){
-   if(bmiResult<18.5){
-     return Colors.orange;
-   }
-   else if(bmiResult>18.5 && bmiResult<24.5){
-     return Colors.teal;
-   }
-   else if(bmiResult>25 && bmiResult<29.5){
-     return Colors.red;
-   }
-   else if(bmiResult>=29.6){
-     return Colors.red[700];
-   }
- }
-  double bmiResult = 32;
+
+  Color? getBmiColor() {
+    if (bmiResult < 18.5) {
+      return Colors.orange;
+    } else if (bmiResult > 18.5 && bmiResult < 24.5) {
+      return Colors.teal;
+    } else if (bmiResult > 25 && bmiResult < 29.5) {
+      return Colors.red;
+    } else if (bmiResult >= 29.6) {
+      return Colors.red[700];
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +88,7 @@ class _MyAppState extends State<MyApp> {
                       ],
                     ),
                     Positioned(
-                      left: 140,
+                      left: 130,
                       top: 70,
                       child: Text(
                         bmiResult.toStringAsFixed(2),
@@ -93,8 +102,12 @@ class _MyAppState extends State<MyApp> {
                   ],
                 ),
                 Text(
-                    bmiCalculation()!,
-                  style: TextStyle(color: getBmiColor()),
+                  bmiCalculation()!,
+                  style: TextStyle(
+                    color: getBmiColor(),
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: 20),
                 Row(
@@ -159,76 +172,119 @@ class _MyAppState extends State<MyApp> {
                 Padding(
                   padding: const EdgeInsets.only(left: 30.0, right: 30),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Column(
-                        children: [
-                          Text(
-                            "Age",
-                            style: TextStyle(color: Colors.grey, fontSize: 20),
-                          ),
-                          SizedBox(height: 15),
-                          Text(
-                            "23",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(
+                              "Age(years)",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                              ),
                             ),
-                          ),
-                        ],
+                            SizedBox(height: 5),
+
+                            TextField(
+                              controller: ageController,
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(width: 2,color: Colors.green),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(width: 2,color: Colors.grey),
+                                  ),
+                                  hintText: "age",hintStyle: TextStyle(fontSize: 13)
+                              ),
+
+                            ),
+                          ],
+                        ),
                       ),
-                      SizedBox(width: 10),
-                      Container(color: Colors.grey, width: 1, height: 70),
-                      SizedBox(width: 10),
+                      SizedBox(width: 10,),
+                      Container(color: Colors.grey, width: 1, height: 90),
+                      SizedBox(width: 10,),
 
-                      Column(
-                        children: [
-                          Text(
-                            "Height",
-                            style: TextStyle(color: Colors.grey, fontSize: 20),
-                          ),
 
-                          SizedBox(height: 15),
-
-                          Text(
-                            "23",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(
+                              "Height(cm)",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                              ),
                             ),
-                          ),
-                        ],
+                            SizedBox(height: 5),
+
+                            TextField(
+                              controller: heightController,
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(width: 2,color: Colors.green),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(width: 2,color: Colors.grey),
+                                  ),
+                                  hintText: "height",hintStyle: TextStyle(fontSize: 13)
+                              ),
+
+                            ),
+                          ],
+                        ),
                       ),
-                      SizedBox(width: 20),
+                      SizedBox(width: 10,),
+                      Container(color: Colors.grey, width: 1, height: 90),
+                      SizedBox(width: 10,),
 
-                      Container(color: Colors.grey, width: 1, height: 70),
-
-                      Column(
-                        children: [
-                          Text(
-                            "Weight",
-                            style: TextStyle(color: Colors.grey, fontSize: 20),
-                          ),
-                          Text(
-                            "23",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(
+                              "Weight(kg)",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                              ),
                             ),
-                          ),
-                        ],
+                            SizedBox(height: 5),
+
+                            TextField(
+                              controller: weightController,
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(width: 2,color: Colors.green),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(width: 2,color: Colors.grey),
+                                ),
+                                hintText: "weight",hintStyle: TextStyle(fontSize: 13)
+                              ),
+
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: 20),
-                InkWell(
-                  onTap: (){},
-                  child: Container(
+                SizedBox(
+                  height: 100,
                     width: double.infinity,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.teal
+                  child: ElevatedButton(
+                    onPressed: (){
+                      setState(() {
+                        calculateBMI();
+                      });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.teal,
 
                     ),
                     child: Center(
