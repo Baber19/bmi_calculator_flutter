@@ -187,6 +187,7 @@ class _MyAppState extends State<MyApp> {
                             SizedBox(height: 5),
 
                             TextField(
+                              textAlign: TextAlign.center,
                               controller: ageController,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
@@ -221,6 +222,8 @@ class _MyAppState extends State<MyApp> {
                             SizedBox(height: 5),
 
                             TextField(
+                              textAlign: TextAlign.center,
+
                               controller: heightController,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
@@ -254,6 +257,8 @@ class _MyAppState extends State<MyApp> {
                             SizedBox(height: 5),
 
                             TextField(
+                              textAlign: TextAlign.center,
+
                               controller: weightController,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
