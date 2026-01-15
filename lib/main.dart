@@ -31,18 +31,6 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  // String? bmiCalculation() {
-  //   if (bmiResult < 18.5) {
-  //     return "Underweight";
-  //   } else if (bmiResult > 18.5 && bmiResult < 24.5) {
-  //     return "Normal";
-  //   } else if (bmiResult > 25 && bmiResult < 29.5) {
-  //     return "Overweight";
-  //   } else if (bmiResult >= 29.6) {
-  //     return "Obese";
-  //   }
-  // }
-  //
   Color? getBmiColor() {
     if (bmiResult < 18.5) {
       return Colors.orange;
