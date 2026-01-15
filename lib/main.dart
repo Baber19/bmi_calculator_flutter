@@ -44,17 +44,17 @@ class _MyAppState extends State<MyApp> {
   //   }
   // }
   //
-  // Color? getBmiColor() {
-  //   if (bmiResult < 18.5) {
-  //     return Colors.orange;
-  //   } else if (bmiResult > 18.5 && bmiResult < 24.5) {
-  //     return Colors.teal;
-  //   } else if (bmiResult > 25 && bmiResult < 29.5) {
-  //     return Colors.red;
-  //   } else if (bmiResult >= 29.6) {
-  //     return Colors.red[700];
-  //   }
-  // }
+  Color? getBmiColor() {
+    if (bmiResult < 18.5) {
+      return Colors.orange;
+    } else if (bmiResult > 18.5 && bmiResult < 24.5) {
+      return Colors.teal;
+    } else if (bmiResult > 25 && bmiResult < 29.5) {
+      return Colors.red;
+    } else if (bmiResult >= 29.6) {
+      return Colors.red[700];
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,13 +112,7 @@ class _MyAppState extends State<MyApp> {
 
 
                   style: TextStyle(
-                    color:   bmiResult< 18.5 ? Colors.orange :
-                    (
-                        bmiResult> 18.5 && bmiResult<=24.5 ? Colors.teal
-                            :
-                        bmiResult> 24.5 && bmiResult<=29.5 ? Colors.red  :
-                        (
-                            bmiResult>=29.5 ? Colors.red[700]),
+                    color: getBmiColor(),
                     fontSize: 50,
                     fontWeight: FontWeight.bold,
                   ),
