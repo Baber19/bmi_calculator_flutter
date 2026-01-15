@@ -31,7 +31,6 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-
   // String? bmiCalculation() {
   //   if (bmiResult < 18.5) {
   //     return "Underweight";
@@ -102,14 +101,13 @@ class _MyAppState extends State<MyApp> {
                   ],
                 ),
                 Text(
-                  bmiResult< 18.5 ? "Underweight" :
-                  (
-                      bmiResult> 18.5 && bmiResult<=24.5 ? "Normal"
-                  :
-                      bmiResult> 24.5 && bmiResult<=29.5 ? "OverWeight" :
-                      (
-                          bmiResult>=29.5 ? "Obese":"")),
-
+                  bmiResult < 18.5
+                      ? "Underweight"
+                      : (bmiResult > 18.5 && bmiResult <= 24.5
+                            ? "Normal"
+                            : bmiResult > 24.5 && bmiResult <= 29.5
+                            ? "OverWeight"
+                            : (bmiResult >= 29.5 ? "Obese" : "")),
 
                   style: TextStyle(
                     color: getBmiColor(),
@@ -199,23 +197,28 @@ class _MyAppState extends State<MyApp> {
                               controller: ageController,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(width: 2,color: Colors.green),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    width: 2,
+                                    color: Colors.green,
                                   ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(width: 2,color: Colors.grey),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    width: 2,
+                                    color: Colors.grey,
                                   ),
-                                  hintText: "age",hintStyle: TextStyle(fontSize: 13)
+                                ),
+                                hintText: "age",
+                                hintStyle: TextStyle(fontSize: 13),
                               ),
-
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(width: 10,),
+                      SizedBox(width: 10),
                       Container(color: Colors.grey, width: 1, height: 90),
-                      SizedBox(width: 10,),
-
+                      SizedBox(width: 10),
 
                       Expanded(
                         child: Column(
@@ -235,22 +238,28 @@ class _MyAppState extends State<MyApp> {
                               controller: heightController,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(width: 2,color: Colors.green),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    width: 2,
+                                    color: Colors.green,
                                   ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(width: 2,color: Colors.grey),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    width: 2,
+                                    color: Colors.grey,
                                   ),
-                                  hintText: "height",hintStyle: TextStyle(fontSize: 13)
+                                ),
+                                hintText: "height",
+                                hintStyle: TextStyle(fontSize: 13),
                               ),
-
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(width: 10,),
+                      SizedBox(width: 10),
                       Container(color: Colors.grey, width: 1, height: 90),
-                      SizedBox(width: 10,),
+                      SizedBox(width: 10),
 
                       Expanded(
                         child: Column(
@@ -271,14 +280,20 @@ class _MyAppState extends State<MyApp> {
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(width: 2,color: Colors.green),
+                                  borderSide: BorderSide(
+                                    width: 2,
+                                    color: Colors.green,
+                                  ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(width: 2,color: Colors.grey),
+                                  borderSide: BorderSide(
+                                    width: 2,
+                                    color: Colors.grey,
+                                  ),
                                 ),
-                                hintText: "weight",hintStyle: TextStyle(fontSize: 13)
+                                hintText: "weight",
+                                hintStyle: TextStyle(fontSize: 13),
                               ),
-
                             ),
                           ],
                         ),
@@ -289,16 +304,15 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(height: 20),
                 SizedBox(
                   height: 100,
-                    width: double.infinity,
+                  width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: (){
+                    onPressed: () {
                       setState(() {
                         calculateBMI();
                       });
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.teal,
-
                     ),
                     child: Center(
                       child: Text(
