@@ -120,7 +120,7 @@ class _MyAppState extends State<MyApp> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              isMaleSelected = true;
+                              isMaleSelected;
                             });
                           },
                           child: Icon(
@@ -147,7 +147,7 @@ class _MyAppState extends State<MyApp> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              isMaleSelected = false;
+                              !isMaleSelected;
                             });
                           },
                           child: Icon(
