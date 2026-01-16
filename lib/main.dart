@@ -82,7 +82,7 @@ class _MyAppState extends State<MyApp> {
                         style: TextStyle(
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
-                          color: Colors.pinkAccent,
+                          color: getBmiColor(),
                         ),
                       ),
                     ),
@@ -311,26 +311,28 @@ class _MyAppState extends State<MyApp> {
                 //   ),
                 // ),
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     calculateBMI();
-
                   },
                   child: Container(
                     height: 100,
                     width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.teal
-                    ), child: Center(child: Text("Calculate Bmi",style: TextStyle(
-                    color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold
-                  ),)),
+                    decoration: BoxDecoration(color: Colors.teal),
+                    child: Center(
+                      child: Text(
+                        "Calculate Bmi",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ),
-                )
+                ),
               ],
-              
             ),
-            
           ),
-          
         ),
       ),
     );
