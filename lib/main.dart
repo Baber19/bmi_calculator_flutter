@@ -120,7 +120,7 @@ class _MyAppState extends State<MyApp> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              isMaleSelected;
+                              isMaleSelected = true;
                             });
                           },
                           child: Icon(
@@ -147,7 +147,7 @@ class _MyAppState extends State<MyApp> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              !isMaleSelected;
+                              isMaleSelected = false;
                             });
                           },
                           child: Icon(
@@ -290,29 +290,40 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
                 SizedBox(height: 20),
-                SizedBox(
-                  height: 100,
+                // SizedBox(
+                //   height: 100,
+                //   width: double.infinity,
+                //   child: ElevatedButton(
+                //     onPressed: () {
+                //       setState(() {
+                //         calculateBMI();
+                //       });
+                //     },
+                //     style: ElevatedButton.styleFrom(
+                //       backgroundColor: Colors.teal,
+                //     ),
+                //     child: Center(
+                //       child: Text(
+                //         "Calculate BMI",
+                //         style: TextStyle(color: Colors.white, fontSize: 30),
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                Container(
+                  height: 200,
                   width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        calculateBMI();
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Calculate BMI",
-                        style: TextStyle(color: Colors.white, fontSize: 30),
-                      ),
-                    ),
+                  decoration: BoxDecoration(
+                    color: Colors.teal
                   ),
-                ),
+                  child: Text("Calculate Bmi"),
+                )
               ],
+              
             ),
+            
           ),
+          
         ),
       ),
     );
