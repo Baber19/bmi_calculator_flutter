@@ -112,7 +112,7 @@ class _MyAppState extends State<MyApp> {
                         Text(
                           "Male",
                           style: TextStyle(
-                            color: isMaleSelected ? Colors.blue : Colors.grey,
+                            color: isMaleSelected ? Colors.lightBlue : Colors.grey,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
