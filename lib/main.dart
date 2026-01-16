@@ -310,13 +310,20 @@ class _MyAppState extends State<MyApp> {
                 //     ),
                 //   ),
                 // ),
-                Container(
-                  height: 200,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.teal
+                InkWell(
+                  onTap: (){
+                    calculateBMI();
+
+                  },
+                  child: Container(
+                    height: 100,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.teal
+                    ), child: Center(child: Text("Calculate Bmi",style: TextStyle(
+                    color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold
+                  ),)),
                   ),
-                  child: Text("Calculate Bmi"),
                 )
               ],
               
