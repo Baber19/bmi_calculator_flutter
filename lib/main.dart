@@ -49,16 +49,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.white,
-            title: Center(
-              child: Text(
-                "BMI Calculator",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
-              ),
-            ),
-          ),
+
           body: SingleChildScrollView(
             child: Column(
               children: [
@@ -334,7 +325,7 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         ),
-      ),
-    );
+
+    ));
   }
 }
