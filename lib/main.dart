@@ -281,26 +281,6 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
                 SizedBox(height: 20),
-                // SizedBox(
-                //   height: 100,
-                //   width: double.infinity,
-                //   child: ElevatedButton(
-                //     onPressed: () {
-                //       setState(() {
-                //         calculateBMI();
-                //       });
-                //     },
-                //     style: ElevatedButton.styleFrom(
-                //       backgroundColor: Colors.teal,
-                //     ),
-                //     child: Center(
-                //       child: Text(
-                //         "Calculate BMI",
-                //         style: TextStyle(color: Colors.white, fontSize: 30),
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 InkWell(
                   onTap: () {
                     calculateBMI();
