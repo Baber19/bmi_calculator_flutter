@@ -288,7 +288,7 @@ class _MyAppState extends State<MyApp> {
                   child: Container(
                     height: 100,
                     width: double.infinity,
-                    decoration: BoxDecoration(color: Colors.red),
+                    decoration: BoxDecoration(color: Colors.purple),
                     child: Center(
                       child: Text(
                         "Calculate Bmi",
