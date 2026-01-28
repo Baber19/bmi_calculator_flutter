@@ -291,7 +291,7 @@ class _MyAppState extends State<MyApp> {
                     decoration: BoxDecoration(color: Colors.purple),
                     child: Center(
                       child: Text(
-                        "Calculate Bmi",
+                        "Calculate BMI",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 40,
